@@ -19,21 +19,45 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __DMFIX-WIN-UTF8_H_INCLUDE__
-#define __DMFIX-WIN-UTF8_H_INCLUDE__
+#ifndef __DMFIX_WIN_UTF8_H_INCLUDE__
+#define __DMFIX_WIN_UTF8_H_INCLUDE__
 
-#include "dmos.h"
+#include <cstdint>
+#ifdef _WIN32
+#include <windows.h>
+#include <fcntl.h>
+#include <io.h>
+#else
+#include <clocale>
+#endif
 
-class Idmfix-win-utf8
-{
+class ConsoleEncoding {
 public:
-    virtual ~Idmfix-win-utf8(){}
-    virtual void DMAPI Release(void) = 0;
-	
-    virtual void DMAPI Test(void) = 0;
+    // 禁止实例化
+    ConsoleEncoding() = delete;
+    ~ConsoleEncoding() = delete;
+    ConsoleEncoding(const ConsoleEncoding&) = delete;
+    ConsoleEncoding& operator=(const ConsoleEncoding&) = delete;
+
+private:
+    // 静态成员变量，用于初始化代码页
+    static inline uint32_t codePage = 65001; // 默认 UTF-8
+
+    // 静态对象的构造函数，用于设置控制台代码页
+    struct Initializer {
+        Initializer() {
+#ifdef _WIN32
+        SetConsoleOutputCP(codePage);
+        SetConsoleCP(codePage);
+#else
+        // 设置 Linux/macOS 区域设置
+        std::setlocale(LC_ALL, "en_US.utf8");
+#endif
+        }
+    };
+
+    // 静态成员变量：自动执行的初始化器
+    static inline Initializer initializer;
 };
 
-Idmfix-win-utf8* DMAPI dmfix-win-utf8GetModule();
-
-typedef Idmfix-win-utf8* (DMAPI* PFN_dmfix-win-utf8GetModule)();
-#endif // __DMFIX-WIN-UTF8_H_INCLUDE__
+#endif // __DMFIX_WIN_UTF8_H_INCLUDE__
