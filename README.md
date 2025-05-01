@@ -31,6 +31,10 @@ dmfix_win_utf8
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 ```
 
+```file
+save file to utf-8 with bom
+```
+
 ## Contacts
 
 ## Thanks
