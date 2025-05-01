@@ -32,6 +32,5 @@ add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 ```
 
 ## Contacts
-[![Join the chat](https://badges.gitter.im/brinkqiang/dmfix_win_utf8/Lobby.svg)](https://gitter.im/brinkqiang/dmfix_win_utf8)
 
 ## Thanks
