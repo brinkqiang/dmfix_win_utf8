@@ -24,7 +24,13 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 ## Intro
 dmfix_win_utf8
 ```cpp
+#include "dmfix_win_utf8.h"
 ```
+
+```cmake
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+```
+
 ## Contacts
 [![Join the chat](https://badges.gitter.im/brinkqiang/dmfix_win_utf8/Lobby.svg)](https://gitter.im/brinkqiang/dmfix_win_utf8)
 
