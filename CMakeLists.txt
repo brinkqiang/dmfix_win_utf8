@@ -8,6 +8,8 @@ INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
 ModuleSetWinCompilerFlags()
 
-LibImport("dmfix_win_utf8_module" "src/dmfix_win_utf8_module")
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
-ExeImport("test" "dmfix_win_utf8_module")
+InterfaceImport("dmfix_win_utf8" "include")
+
+ExeImport("test" "dmfix_win_utf8")

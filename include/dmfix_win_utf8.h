@@ -19,6 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// cmake env
+// add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+
 #ifndef __DMFIX_WIN_UTF8_H_INCLUDE__
 #define __DMFIX_WIN_UTF8_H_INCLUDE__
 
