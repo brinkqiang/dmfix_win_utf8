@@ -26,6 +26,7 @@
 #define __DMFIX_WIN_UTF8_H_INCLUDE__
 
 #include <cstdint>
+#include <iostream>
 #ifdef _WIN32
 #include <windows.h>
 #include <fcntl.h>
