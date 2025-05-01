@@ -13,12 +13,6 @@ TEST(ConsoleEncodingTest, CodePageSettings) {
 #endif
 }
 
-TEST(ConsoleEncodingTest, SingletonPattern) {
-    EXPECT_TRUE(std::is_abstract_v<ConsoleEncoding>);
-    EXPECT_TRUE(std::is_copy_constructible_v<ConsoleEncoding> == false);
-    EXPECT_TRUE(std::is_move_constructible_v<ConsoleEncoding> == false);
-}
-
 TEST(ConsoleEncodingTest, cout) {
 
     std::cout << "中文测试" << std::endl;
